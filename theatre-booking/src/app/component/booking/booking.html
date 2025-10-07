@@ -1,0 +1,25 @@
+
+<h2>🎟️ حجز العرض:</h2>
+
+<p>📅 التاريخ: {{ show?.date }}</p>
+<p>⏰ الوقت: {{ show?.time }}</p>
+<p>💰 السعر لكل مقعد: {{ show?.price }}</p>
+
+<h3>المقاعد المتاحة:</h3>
+<ul>
+  <li *ngFor="let seat of seats" (click)="toggleSeat(seat.id)" 
+      [class.selected]="selectedSeats.includes(seat.id)">
+    مقعد {{ seat.seat_number }}
+  </li>
+</ul>
+
+<p>المقاعد المحددة: {{ selectedSeats.length }}</p>
+
+<button (click)="bookSelectedSeats()" [disabled]="selectedSeats.length === 0">احجز الآن</button>
+
+<!-- رسالة تم الحجز -->
+<div *ngIf="bookingSuccess" class="alert alert-success">
+  تم الحجز بنجاح!
+  <button (click)="goToExtras()">اختر الإضافات</button>
+   
+</div>

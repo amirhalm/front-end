@@ -1,0 +1,14 @@
+
+<h2>{{ theatre?.name }}</h2>
+<p>{{ theatre?.location }}</p>
+
+<h3>العروض المتاحة</h3>
+<ul>
+  <li *ngFor="let show of shows">
+    <div>
+      {{ show.title }} - {{ show.date }} - {{ show.time }} - {{ show.price | currency }}
+      <a [routerLink]="['/booking', show.id]">احجز الآن</a>
+    </div>
+  </li>
+</ul>
+<p *ngIf="shows.length === 0">🚫 لا توجد عروض حالياً لهذا المسرح.</p>
