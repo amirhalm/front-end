@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2 class="mb-3 text-center">🎭 قائمة العروض للمسرح رقم {{ theatreId }}</h2>
+
+  <div *ngIf="loading" class="text-center">
+    <p>جارِ تحميل البيانات...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!loading && shows.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>العنوان</th>
+          <th>التاريخ</th>
+          <th>الوقت</th>
+          <th>السعر</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let show of shows">
+          <td>{{ show.title }}</td>
+          <td>{{ show.date }}</td>
+          <td>{{ show.time }}</td>
+          <td>{{ show.price }} ج.م</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && shows.length === 0 && !errorMessage" class="text-center">
+    <p>لا توجد عروض متاحة لهذا المسرح حالياً.</p>
+  </div>
+</div>

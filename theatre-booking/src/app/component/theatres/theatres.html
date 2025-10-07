@@ -1,0 +1,7 @@
+
+<h2>المسارح</h2>
+<ul>
+  <li *ngFor="let theatre of theatres">
+    <a [routerLink]="['/theatre-details', theatre.id]">{{ theatre.name }} - {{ theatre.location }}</a>
+  </li>
+</ul>
